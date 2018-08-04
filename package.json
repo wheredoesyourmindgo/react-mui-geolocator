@@ -27,12 +27,7 @@
   "author": "Abe Hendricks<moemanchu@icloud.com>",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^1.4.1",
-    "@material-ui/icons": "^2.0.0",
-    "babel-runtime": "^6.26.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -55,6 +50,14 @@
     "rollup": "^0.63.4",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.4",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^1.4.3",
+    "@material-ui/icons": "^2.0.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   }
 }

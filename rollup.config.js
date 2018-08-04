@@ -2,6 +2,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import pkg from './package.json';
 
@@ -10,24 +11,27 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
+      sourcemap: true
     },
     {
       file: pkg.module,
-      format: 'es'
+      format: 'es',
+      sourcemap: true
     }
   ],
   // All the used libs needs to be here
   external: [
-    'react',
-    'prop-types',
-    '@material-ui/core/Button',
-    '@material-ui/core/CircularProgress',
-    '@material-ui/core/colors/green',
-    '@material-ui/core/styles',
-    '@material-ui/icons/GpsFixed'
+    // 'react',
+    // 'prop-types',
+    // '@material-ui/core/Button',
+    // '@material-ui/core/CircularProgress',
+    // '@material-ui/core/colors/green',
+    // '@material-ui/core/styles',
+    // '@material-ui/icons/GpsFixed'
   ],
   plugins: [
+    peerDepsExternal(),
     resolve(),
     commonjs({
       // non-CommonJS modules will be ignored, but you can also
