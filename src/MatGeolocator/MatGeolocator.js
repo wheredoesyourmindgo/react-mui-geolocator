@@ -9,8 +9,8 @@ import {withStyles} from '@material-ui/core/styles';
 const DEFAULT_TIMEOUT = 15000;
 
 type Props = {
-  classes: any,
-  timeout: number,
+  classes: any, // provided by withStyles
+  timeout: number, // provided by defaultProps
   onClick: (coords: Coordinates) => void,
   onError?: (error: PositionError) => void
 };

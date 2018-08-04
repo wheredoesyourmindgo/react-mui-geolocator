@@ -3,7 +3,7 @@ import MapGL, {NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import {easeCubic} from 'd3-ease';
 // import MatLocator from 'react-mui-geolocator';
 // import for use with developing component from copy of source.
-import MatLocator from './lib/MatGeolocator';
+import MatLocator from './lib/MatGeolocator/MatGeolocator';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
 
@@ -48,7 +48,10 @@ class Demo extends Component {
           </div>
 
           <div className="geolocator">
-            <MatGeolocator />
+            <MatLocator
+              onClick={(coords) => console.log(coords)}
+              onError={(error) => console.log(error)}
+            />
           </div>
         </MapGL>
       </div>
