@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import MapGL, {NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import {easeCubic} from 'd3-ease';
-// import MatLocator from 'react-mui-geolocator';
+import MatLocator from 'react-mui-geolocator';
 // import for use with developing component from copy of source.
-import MatLocator from './lib/MatGeolocator/MatGeolocator';
+// import MatLocator from './lib/MatGeolocator/MatGeolocator';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
 
@@ -18,11 +18,11 @@ class Demo extends Component {
     }
   };
 
-  _handleGeocoderSelect = (result) => {
+  _handleGeocoderSelect = ({latitude, longitude}) => {
     const viewport = {
       ...this.state.viewport,
-      longitude: result.center[0],
-      latitude: result.center[1],
+      longitude,
+      latitude,
       zoom: 18,
       transitionDuration: 4000,
       transitionInterpolator: new FlyToInterpolator(),
@@ -49,8 +49,8 @@ class Demo extends Component {
 
           <div className="geolocator">
             <MatLocator
-              onClick={(coords) => console.log(coords)}
-              onError={(error) => console.log(error)}
+              onClick={(coords) => this._handleGeocoderSelect(coords)}
+              onError={(error) => alert(error)}
             />
           </div>
         </MapGL>

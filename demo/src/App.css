@@ -1,4 +1,4 @@
-.App .geocoder {
+.App .geolocator {
   z-index: 4;
   position: absolute;
   top: 10px;
