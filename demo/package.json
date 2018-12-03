@@ -20,5 +20,11 @@
     "eject": "react-scripts eject",
     "cp-src": "cp -R ../src/MatGeolocator src/lib/"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
