@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import GpsFixedIcon from '@material-ui/icons/GpsFixed';
 import green from '@material-ui/core/colors/green';
@@ -11,6 +11,7 @@ const DEFAULT_TIMEOUT = 15000;
 type Props = {
   classes: any, // provided by withStyles
   timeout: number, // provided by defaultProps
+  size: string, // provided by defaultProps
   onClick: (coords: Coordinates) => void,
   onError?: (error: PositionError) => void
 };
@@ -35,7 +36,8 @@ const styles = (theme) => ({
 
 class geoLocator extends React.Component<Props, State> {
   static defaultProps = {
-    timeout: DEFAULT_TIMEOUT
+    timeout: DEFAULT_TIMEOUT,
+    size: 'small'
   };
 
   state = {
@@ -64,17 +66,16 @@ class geoLocator extends React.Component<Props, State> {
 
   render() {
     const {locating} = this.state;
-    const {classes} = this.props;
+    const {classes, size} = this.props;
     return (
       <React.Fragment>
-        <Button
-          mini
-          variant="fab"
+        <Fab
+          size={size}
           aria-label="geolocate control"
           onClick={this.locate}
         >
           <GpsFixedIcon />
-        </Button>
+        </Fab>
         {locating && (
           <CircularProgress size={48} className={classes.fabProgress} />
         )}

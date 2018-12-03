@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import MapGL, {NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import {easeCubic} from 'd3-ease';
-import MatLocator from 'react-mui-geolocator';
+// import MatLocator from 'react-mui-geolocator';
 // import for use with developing component from copy of source.
-// import MatLocator from './lib/MatGeolocator/MatGeolocator';
+import MatLocator from './lib/MatGeolocator';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
 
