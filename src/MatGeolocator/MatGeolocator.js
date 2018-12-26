@@ -15,8 +15,8 @@ type Props = {
   size: string, // provided by defaultProps
   onClick: (coords: Coordinates) => void,
   onError?: (error: PositionError) => void,
-  progressClasses: any,
-  fabClasses: any
+  progressClasses?: any,
+  fabClasses?: any
 };
 
 type State = {|
