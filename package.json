@@ -27,7 +27,8 @@
   "author": "Abe Hendricks<moemanchu@icloud.com>",
   "license": "ISC",
   "dependencies": {
-    "@babel/runtime": "^7.1.5"
+    "@babel/runtime": "^7.1.5",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
