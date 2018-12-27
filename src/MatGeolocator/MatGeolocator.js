@@ -14,8 +14,8 @@ type Props = {
   size: string, // provided by defaultProps
   onClick: (coords: Coordinates) => void,
   onError?: (error: PositionError) => void,
-  progressStyles?: any,
-  fabStyles?: any
+  progressStyle?: any,
+  fabStyle?: any
 };
 
 type State = {|
@@ -64,14 +64,14 @@ class geoLocator extends React.Component<Props, State> {
 
   render() {
     const {locating} = this.state;
-    const {classes, size, fabStyles, progressStyles} = this.props;
+    const {classes, size, fabStyle, progressStyle} = this.props;
     return (
       <React.Fragment>
         <Fab
           size={size}
           aria-label="geolocate control"
           onClick={this.locate}
-          styles={fabStyles}
+          styles={fabStyle}
         >
           <GpsFixedIcon />
         </Fab>
@@ -79,7 +79,7 @@ class geoLocator extends React.Component<Props, State> {
           <CircularProgress
             size={48}
             className={classes.fabProgress}
-            styles={progressStyles}
+            style={progressStyle}
           />
         )}
       </React.Fragment>
