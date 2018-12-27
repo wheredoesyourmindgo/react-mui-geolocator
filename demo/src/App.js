@@ -49,6 +49,7 @@ class Demo extends Component {
 
           <div className="geolocator">
             <MatLocator
+              progressStyle={{color: 'black'}}
               onClick={(coords) => this._handleGeocoderSelect(coords)}
               onError={(error) => alert(error)}
             />

@@ -8,7 +8,6 @@ import green from '@material-ui/core/colors/green';
 const DEFAULT_TIMEOUT = 15000;
 
 type Props = {
-  classes: any, // provided by withStyles
   timeout: number, // provided by defaultProps
   size: string, // provided by defaultProps
   onClick: (coords: Coordinates) => void,
@@ -77,7 +76,7 @@ class geoLocator extends React.Component<Props, State> {
             size={48}
             style={{
               ...defaultProgressStyle,
-              progressStyle
+              ...progressStyle
             }}
           />
         )}
