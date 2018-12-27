@@ -22,7 +22,6 @@ export default {
   ],
   // All the used libs needs to be here
   external: [
-    'classnames'
     // 'react',
     // 'prop-types',
     // '@material-ui/core/Button',
