@@ -4,7 +4,6 @@ import Fab from '@material-ui/core/Fab';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import GpsFixedIcon from '@material-ui/icons/GpsFixed';
 import green from '@material-ui/core/colors/green';
-import {withStyles} from '@material-ui/core/styles';
 
 const DEFAULT_TIMEOUT = 15000;
 
@@ -22,15 +21,13 @@ type State = {|
   locating: boolean
 |};
 
-const styles = (theme) => ({
-  fabProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: -4,
-    left: -4,
-    zIndex: 1
-  }
-});
+const defaultProgressStyle = {
+  color: green[500],
+  position: 'absolute',
+  top: -4,
+  left: -4,
+  zIndex: 1
+};
 
 class geoLocator extends React.Component<Props, State> {
   static defaultProps = {
@@ -64,22 +61,24 @@ class geoLocator extends React.Component<Props, State> {
 
   render() {
     const {locating} = this.state;
-    const {classes, size, fabStyle, progressStyle} = this.props;
+    const {size, fabStyle, progressStyle} = this.props;
     return (
       <React.Fragment>
         <Fab
           size={size}
           aria-label="geolocate control"
           onClick={this.locate}
-          styles={fabStyle}
+          style={fabStyle}
         >
           <GpsFixedIcon />
         </Fab>
         {locating && (
           <CircularProgress
             size={48}
-            className={classes.fabProgress}
-            style={progressStyle}
+            style={{
+              ...defaultProgressStyle,
+              progressStyle
+            }}
           />
         )}
       </React.Fragment>
@@ -87,4 +86,4 @@ class geoLocator extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(styles)(geoLocator);
+export default geoLocator;
