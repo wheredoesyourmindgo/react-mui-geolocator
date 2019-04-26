@@ -8,8 +8,8 @@ import green from '@material-ui/core/colors/green';
 const DEFAULT_TIMEOUT = 15000;
 
 type Props = {
-  timeout: number; // provided by defaultProps
-  size: FabSize; // provided by defaultProps
+  timeout?: number; // provided by defaultProps
+  size?: FabSize; // provided by defaultProps
   onClick: (coords: Coordinates) => void;
   onError?: (error: PositionError) => void;
   progressStyle?: any;
