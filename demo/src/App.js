@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useCallback} from 'react';
 import MapGL, {NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import {easeCubic} from 'd3-ease';
 // import MatLocator from 'react-mui-geolocator';
@@ -7,57 +7,56 @@ import MatLocator from './lib/MatGeolocator';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
 
-class Demo extends Component {
-  state = {
-    viewport: {
-      width: window.innerWidth || 400,
-      height: window.innerHeight || 400,
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
-    }
-  };
+const Demo = () => {
+  const [viewport, setViewport] = useState({
+    width: window.innerWidth || 400,
+    height: window.innerHeight || 400,
+    latitude: 37.7577,
+    longitude: -122.4376,
+    zoom: 8
+  });
 
-  _handleGeocoderSelect = ({latitude, longitude}) => {
-    const viewport = {
-      ...this.state.viewport,
-      longitude,
-      latitude,
-      zoom: 18,
-      transitionDuration: 4000,
-      transitionInterpolator: new FlyToInterpolator(),
-      transitionEasing: easeCubic
-    };
-    this._onViewportChange(viewport);
-  };
+  const _onViewportChange = useCallback((vwpt) => {
+    setViewport(vwpt);
+  }, []);
 
-  _onViewportChange = (viewport) => {
-    this.setState({viewport});
-  };
+  const _handleGeocoderSelect = useCallback(
+    async ({latitude, longitude}) => {
+      const newViewport = {
+        ...viewport,
+        longitude,
+        latitude,
+        zoom: 18,
+        transitionDuration: 4000,
+        transitionInterpolator: new FlyToInterpolator(),
+        transitionEasing: easeCubic
+      };
+      _onViewportChange({...newViewport});
+    },
+    [_onViewportChange, viewport]
+  );
 
-  render() {
-    return (
-      <div className="App">
-        <MapGL
-          {...this.state.viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-          onViewportChange={this._onViewportChange}
-        >
-          <div className="navControls">
-            <NavigationControl onViewportChange={this._onViewportChange} />
-          </div>
+  return (
+    <div className="App">
+      <MapGL
+        {...viewport}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+        onViewportChange={_onViewportChange}
+      >
+        <div className="navControls">
+          <NavigationControl onViewportChange={_onViewportChange} />
+        </div>
 
-          <div className="geolocator">
-            <MatLocator
-              progressStyle={{color: 'black'}}
-              onClick={(coords) => this._handleGeocoderSelect(coords)}
-              onError={(error) => alert(error)}
-            />
-          </div>
-        </MapGL>
-      </div>
-    );
-  }
-}
+        <div className="geolocator">
+          <MatLocator
+            progressStyle={{color: 'pink'}}
+            onClick={(coords) => _handleGeocoderSelect(coords)}
+            onError={(error) => alert(error)}
+          />
+        </div>
+      </MapGL>
+    </div>
+  );
+};
 
 export default Demo;
