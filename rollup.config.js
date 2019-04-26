@@ -2,12 +2,16 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import typescript from 'rollup-plugin-typescript2';
+import {terser} from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import pkg from './package.json';
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
@@ -21,26 +25,22 @@ export default {
     }
   ],
   // All the used libs needs to be here
-  external: [
-    // 'react',
-    // 'prop-types',
-    // '@material-ui/core/Button',
-    // '@material-ui/core/CircularProgress',
-    // '@material-ui/core/colors/green',
-    // '@material-ui/core/styles',
-    // '@material-ui/icons/GpsFixed'
-  ],
+  external: [...Object.keys(pkg.dependencies || {})],
   plugins: [
     peerDepsExternal(),
-    resolve(),
+    resolve({extensions}),
     commonjs({
       // non-CommonJS modules will be ignored, but you can also
       // specifically include/exclude files
       include: 'node_modules/**' // Default: undefined
     }),
+    typescript(),
     babel({
       runtimeHelpers: true,
-      exclude: 'node_modules/**'
-    })
+      include: ['src/**/*'],
+      exclude: 'node_modules/**',
+      extensions
+    }),
+    terser()
   ]
 };

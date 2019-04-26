@@ -24,4 +24,4 @@ yarn-error.log*
 .vscode/
 
 /dist
-/flow-typed
+.rpt2_cache/
