@@ -8,13 +8,13 @@ import green from '@material-ui/core/colors/green';
 const DEFAULT_TIMEOUT = 15000;
 
 type Props = {
-  timeout?: number; // provided by defaultProps
-  size?: FabSize; // provided by defaultProps
   onClick: (coords: Coordinates) => void;
+  classes: any;
+  timeout?: number;
+  size?: FabSize;
   onError?: (error: PositionError) => void;
   progressStyle?: any;
   fabStyle?: any;
-  classes: any;
 };
 
 type FabSize = FabProps['size'];
@@ -29,7 +29,7 @@ const styles = createStyles({
   }
 });
 
-const MatGeoLocator: React.FC<Props> = ({
+const MatGeoLocator = ({
   classes,
   timeout = DEFAULT_TIMEOUT,
   size = 'small',
@@ -37,7 +37,7 @@ const MatGeoLocator: React.FC<Props> = ({
   onError,
   progressStyle,
   fabStyle
-}) => {
+}: Props) => {
   const [locating, setLocating] = useState<boolean>(false);
 
   /**
@@ -59,7 +59,7 @@ const MatGeoLocator: React.FC<Props> = ({
     );
   }, [onClick, onError, timeout]);
 
-  const foo = useMemo(
+  const progress = useMemo(
     () =>
       locating && (
         <CircularProgress
@@ -83,7 +83,7 @@ const MatGeoLocator: React.FC<Props> = ({
       >
         <GpsFixedIcon />
       </Fab>
-      {foo}
+      {progress}
     </React.Fragment>
   );
 };
