@@ -857,7 +857,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
   integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
@@ -1180,7 +1180,7 @@
     prop-types "^15.7.2"
     react-transition-group "^4.3.0"
 
-"@material-ui/icons@^4.2.1", "@material-ui/icons@^4.4.3":
+"@material-ui/icons@^4.4.3":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.4.3.tgz#5d4346ddbb2673a1b57ebc78fd6d50bcd88711db"
   integrity sha512-HVVvUyc/78kmaBd93LkfWyGkXMM+zOMKzUfulWXxaV/fFAZ3N0pD0oHjWUd94zrOoF3tZP9JC7EPlIpIcZSNow==
@@ -8485,13 +8485,13 @@ react-map-gl@^5.0.12:
     react-virtualized-auto-sizer "^1.0.2"
     viewport-mercator-project "^6.1.0"
 
-react-mui-geolocator@^0.0.20:
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/react-mui-geolocator/-/react-mui-geolocator-0.0.20.tgz#75ec81d5cd71976d55f088178b996a736c6bcfc0"
-  integrity sha512-rNEsNfDS9Vvh9iOHSMWOtdWEjGCDVLKTTSrUAidrgyiazi4TTZyQgBsqvKk33HkIRLa6xj9if7g5h1Ur54SN6w==
+react-mui-geolocator@^0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/react-mui-geolocator/-/react-mui-geolocator-0.0.22.tgz#177d41ebabada1622fde27c821c70420a71b103a"
+  integrity sha512-Wb1aHuLgnk6pLpldhefR20Mn7jzTXZiCefNtRI462ClpkLBVDIy4X/H30JlvQBqi0x+3E4P9Xzey9JvsAv2O5Q==
   dependencies:
-    "@babel/runtime" "^7.5.4"
-    "@material-ui/icons" "^4.2.1"
+    "@babel/runtime" "^7.6.3"
+    "@material-ui/icons" "^4.4.3"
 
 react-scripts@^3.0.0:
   version "3.2.0"
