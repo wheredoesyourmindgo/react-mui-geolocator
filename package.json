@@ -1,68 +1,29 @@
 {
-  "name": "react-mui-geolocator",
-  "version": "0.0.22",
-  "description": "A Material UI button that uses HTML5 Geolocation API to allow a user to provide their location to web applications if they so desire.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wheredoesyourmindgo/react-mui-geolocator"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "files": [
-    "dist/"
+  "name": "react-mui-geolocator-mono",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "rollup -c -w",
-    "build": "rollup -c",
-    "prepublish": "npm run build",
-    "type-check": "tsc -p .",
-    "install-peers": "install-peers -f",
-    "postinstall": "npm run install-peers"
-  },
-  "keywords": [
-    "geolocation",
-    "html5",
-    "mapping",
-    "material-ui",
-    "react"
+  "license": "MIT",
+  "main": "packages/client/dist/index.js",
+  "files": [
+    "packages/client/dist/",
+    "packages/server/dist/",
+    "README.md"
   ],
   "author": "Abe Hendricks<moemanchu@icloud.com>",
-  "license": "ISC",
-  "dependencies": {
-    "@babel/runtime": "^7.9.2",
-    "@material-ui/icons": "^4.9.1"
+  "scripts": {
+    "build:pkg": "yarn --cwd packages/pkg build",
+    "build:demo": "yarn --cwd packages/demo build",
+    "dev:pkg": "yarn --cwd packages/pkg dev",
+    "dev:demo": "yarn --cwd packages/demo dev",
+    "build": "yarn build:pkg",
+    "prepublish": "npm run build",
+    "watch:src": "nodemon --delay 1 --watch ./packages/pkg/dist/ --exec \"yarn --cwd packages/demo run cp-dist\"",
+    "dev": "concurrently -n pkg,demo,cp-dist 'yarn dev:pkg' 'yarn dev:demo' 'yarn watch:src'"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "@typescript-eslint/parser": "^2.27.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "install-peers-cli": "^2.2.0",
-    "prettier": "^2.0.4",
-    "rollup": "^2.3.3",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.2",
-    "rollup-plugin-terser": "^5.3.0",
-    "rollup-plugin-typescript2": "^0.27.0",
-    "typescript": "^3.8.3"
-  },
-  "peerDependencies": {
-    "@material-ui/core": "^4.9.9",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "concurrently": "^6.0.2",
+    "nodemon": "^2.0.6"
   }
 }
