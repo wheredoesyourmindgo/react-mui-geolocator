@@ -3,13 +3,17 @@
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "d3-ease": "^2.0.0",
-    "next": "^10.0.0",
+    "@emotion/cache": "^11.4.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.2",
+    "d3-ease": "^3.0.1",
+    "next": "^11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-map-gl": "^6.1.15",
-    "vercel": "^22.0.1"
+    "react-map-gl": "^6.1.17",
+    "vercel": "^23.1.2"
   },
   "scripts": {
     "dev": "next",
@@ -19,23 +23,18 @@
     "cp-dist": "cp -R ../pkg/dist/ src/lib/pkg"
   },
   "devDependencies": {
-    "@types/d3": "^5.7.2",
-    "@types/node": "^15.0.1",
-    "@types/react": "^17.0.4",
-    "@types/react-dom": "^17.0.3",
-    "@types/react-map-gl": "^5.2.2",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.25.0",
+    "@types/d3": "^7.0.0",
+    "@types/node": "^16.10.2",
+    "@types/react": "^17.0.25",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-map-gl": "^6.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-compat": "^3.5.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.0.4",
-    "typescript": "^4.2.4"
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
   },
   "browserslist": [
     ">0.2%",

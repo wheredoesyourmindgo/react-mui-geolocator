@@ -3,13 +3,9 @@ import {
   Fab,
   FabProps,
   CircularProgress,
-  withStyles,
-  createStyles,
   CircularProgressProps,
-} from '@material-ui/core';
-import GpsFixedIcon from '@material-ui/icons/GpsFixed';
-import clsx from 'clsx';
-import green from '@material-ui/core/colors/green';
+} from '@mui/material';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
 const DEFAULT_TIMEOUT = 15000;
 
@@ -20,16 +16,6 @@ type Props = {
   onGeolocateError?: (error: GeolocationPositionError) => void;
   circularProgressProps?: Partial<CircularProgressProps>;
 } & Partial<FabProps>;
-
-const styles = createStyles({
-  progress: {
-    color: green[500],
-    position: 'absolute',
-    top: -4,
-    left: -4,
-    zIndex: 1,
-  },
-});
 
 const MatGeoLocator = ({
   classes,
@@ -62,17 +48,28 @@ const MatGeoLocator = ({
   }, [onClick, onGeolocateError, timeout]);
 
   const progress = useMemo(() => {
-    const {className: classNameProp, ...props} = circularProgressProps ?? {};
+    const {
+      className: classNameProp,
+      sx,
+      ...props
+    } = circularProgressProps ?? {};
     return (
       locating && (
         <CircularProgress
           size={48}
-          className={clsx([classes.progress, classNameProp])}
+          sx={{
+            color: 'secondary.main',
+            position: 'absolute',
+            top: '-4px',
+            left: '-4px',
+            zIndex: 1,
+            ...sx,
+          }}
           {...props}
         />
       )
     );
-  }, [locating, circularProgressProps, classes]);
+  }, [locating, circularProgressProps]);
 
   return (
     <>
@@ -89,4 +86,4 @@ const MatGeoLocator = ({
   );
 };
 
-export default withStyles(styles)(MatGeoLocator);
+export default MatGeoLocator;
