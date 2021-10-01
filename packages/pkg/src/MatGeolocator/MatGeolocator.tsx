@@ -11,14 +11,12 @@ const DEFAULT_TIMEOUT = 15000;
 
 type Props = {
   onClick: (coords: GeolocationCoordinates) => void;
-  classes: any;
   timeout?: number;
   onGeolocateError?: (error: GeolocationPositionError) => void;
   circularProgressProps?: Partial<CircularProgressProps>;
 } & Partial<FabProps>;
 
 const MatGeoLocator = ({
-  classes,
   timeout = DEFAULT_TIMEOUT,
   size = 'small',
   onClick,
